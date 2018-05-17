@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="iwlearn.theme">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="IW:LEARN Theme"
+      directory="profiles/default"
+      description='Extension profile for the "IW:LEARN" Plone theme.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="iwlearn.theme.various"
+      title="IW:LEARN: miscellaneous import steps"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler="iwlearn.theme.setuphandlers.setupVarious">
+    <depends name="skins"/>
+  </genericsetup:importStep>
+
+</configure>

@@ -1,0 +1,19 @@
+<div metal:define-macro="portal_footer"
+     i18n:domain="plone"
+     class="row">
+    <div class="cell width-full position-0">
+
+        <div id="portal-footer">
+            <p>
+                <acronym title="Copyright">&#xA9;</acronym>
+                2001-<tal:year tal:content="view/year" />
+                GEF IW:LEARN. &nbsp;&nbsp;&nbsp;&nbsp;
+                Last Update: <span tal:replace="view/last_update" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Email corrections to <a href="mailto:unep@iwlearn.org"> unep@iwlearn.org </a>
+
+            </p>
+        </div>
+
+    </div>
+</div>

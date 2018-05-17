@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="iwlearn.theme">
+
+  <!-- 'IW:LEARN' Zope 3 browser layer
+    Register views, viewlets and resources for this layer to make sure
+    they only apply to the 'IW:LEARN' theme.
+    You can also use this layer to override default Plone browser views
+    and viewlets only within the 'IW:LEARN' theme.
+  -->
+  <interface
+      interface="..interfaces.IThemeSpecific"
+      type="zope.publisher.interfaces.browser.IBrowserSkinType"
+      name="IW:LEARN"
+      />
+
+
+  <!-- Override the view on your own add-on layer -->
+  <browser:page
+    name="plone_layout"
+    for="*"
+    permission="zope.Public"
+    class=".layout.LayoutPolicy"
+    allowed_interface="plone.app.layout.globals.interfaces.ILayoutPolicy"
+    layer="..interfaces.IAddonSpecific"
+    />
+
+  <!-- Viewlets registration -->
+  <browser:viewlet
+      name="plone.footer"
+      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+      class=".viewlets.FooterViewlet"
+      layer="..interfaces.IThemeSpecific"
+      permission="zope2.View"
+      />
+
+<!--
+
+ plone.portlet.collection.collection.pt
+-->
+
+    <browser:viewlet
+        name="plone.nextprevious"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        layer="..interfaces.IThemeSpecific"
+        template="templates/plone.app.layout.nextprevious.nextprevious.pt"
+        class="plone.app.layout.nextprevious.view.NextPreviousViewlet"
+        permission="zope2.View"
+        />
+
+
+    <!-- The search box -->
+    <browser:viewlet
+        name="plone.searchbox"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        layer="..interfaces.IThemeSpecific"
+        template="templates/plone.app.layout.viewlets.searchbox.pt"
+        class="plone.app.layout.viewlets.common.SearchBoxViewlet"
+        permission="zope2.View"
+        />
+
+  <browser:page
+      name="feed-item.html"
+      for="Products.feedfeeder.interfaces.item.IFeedItem"
+      class="Products.feedfeeder.browser.feeditem.FeedItemView"
+      permission="zope2.View"
+      layer="..interfaces.IThemeSpecific"
+      template="templates/products.feedfeeder.browser.feed-item.pt"
+      />
+
+  <!-- Special views for normal carousel -->
+   <browser:page
+    name="carousel-view"
+    for="Products.ATContentTypes.interface.IATDocument"
+    template="templates/page-tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.IThemeSpecific"
+    />
+
+  <!-- Views for carousel portlet -->
+  <browser:page
+    name="carousel-portlet-view"
+    for="Products.ATContentTypes.interface.IATDocument"
+    template="templates/page-tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.IThemeSpecific"
+    />
+
+
+  <!-- Special views for normal carousel -->
+   <browser:page
+    name="carousel-view"
+    for="Products.ATContentTypes.interface.IATNewsItem"
+    template="templates/news-tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.IThemeSpecific"
+    />
+
+  <!-- Views for carousel portlet -->
+  <browser:page
+    name="carousel-portlet-view"
+    for="Products.ATContentTypes.interface.IATNewsItem"
+    template="templates/news-tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.IThemeSpecific"
+    />
+
+
+
+  <!-- Special views for normal carousel -->
+   <browser:page
+    name="carousel-view"
+    for="Products.feedfeeder.interfaces.item.IFeedItem"
+    template="templates/feed-tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.IThemeSpecific"
+    />
+
+  <!-- Views for carousel portlet -->
+  <browser:page
+    name="carousel-portlet-view"
+    for="Products.feedfeeder.interfaces.item.IFeedItem"
+    template="templates/feed-tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.IThemeSpecific"
+    />
+	<!-- class="plone.app.search.browser.Search" -->
+	<browser:page
+	 name="search"
+	 permission="zope2.View"
+     class=".browser.Search"
+	 for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+	 layer="..interfaces.IThemeSpecific"
+	 template="templates/iwlearn_search.pt"/>
+  <!-- Zope 3 browser resources -->
+
+  <!-- Resource directory for images
+    See iwlearn/theme/browser/images/README.txt
+    for more information about registering images as Zope 3 browser
+    resources.
+  -->
+  <browser:resourceDirectory
+      name="iwlearn.theme.images"
+      directory="images"
+      layer="..interfaces.IThemeSpecific"
+      />
+
+  <!-- Resource directory for stylesheets
+    See iwlearn/theme/browser/stylesheets/README.txt
+    for more information about registering stylesheets as Zope 3 browser
+    resources.
+  -->
+  <browser:resourceDirectory
+      name="iwlearn.theme.stylesheets"
+      directory="stylesheets"
+      layer="..interfaces.IThemeSpecific"
+      />
+
+</configure>

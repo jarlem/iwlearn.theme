@@ -1,0 +1,21 @@
+<tal:block define="item_url context/getURL|context/absolute_url;
+                  item_description context/Description;
+                  item_title_or_id context/pretty_title_or_id;
+                ">
+
+<a href="#"
+   tal:attributes="href item_url;">
+    <img src="" alt="project logo"
+        class="tileImage"
+        tal:attributes="src string:${item_url}/logo_image"/>
+</a>
+<strong>
+    <a href="#"
+       class="summary url"
+       tal:attributes="href item_url"
+       tal:content="item_title_or_id">
+        Item Title
+    </a>
+</strong>
+<div tal:content="item_description"></div>
+</tal:block>
